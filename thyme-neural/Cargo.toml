@@ -1,0 +1,37 @@
+[package]
+name = "thyme-neural"
+version.workspace = true
+edition.workspace = true
+description.workspace = true
+repository.workspace = true
+categories.workspace = true
+license.workspace = true
+keywords.workspace = true
+
+[dependencies]
+thyme_core = { path = "../thyme-core", package = "thyme-core" }
+thyme_data = { path = "../thyme-data", package = "thyme-data" }
+
+serde = { version = "1.0.190", features = ["derive"] }
+serde_json = "1.0.133"
+
+# Neural nets for windows
+[target.'cfg(target_os = "windows")'.dependencies]
+candle-core = { version = "0.8.2" }
+candle-nn = { version = "0.8.2"}
+
+# Neural nets for linux
+[target.'cfg(target_os = "linux")'.dependencies]
+candle-core = { version = "0.8.2" }
+candle-nn = { version = "0.8.2" }
+openssl = { version = "0.10", features = ["vendored"] }
+
+# Neural nets for apple x86_64 
+[target.'cfg(all(target_os = "macos", target_arch = "x86_64"))'.dependencies]
+candle-core = { version = "0.8.2", features = ["accelerate"] }
+candle-nn = { version = "0.8.2", features = ["accelerate"] }
+
+# Neural nets for apple metal
+[target.'cfg(all(target_os = "macos", target_arch = "aarch64"))'.dependencies]
+candle-core = { version = "0.8.2", features = ["metal", "accelerate"] }
+candle-nn = { version = "0.8.2", features = ["metal", "accelerate"] }

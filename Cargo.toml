@@ -1,0 +1,34 @@
+[workspace]
+members = [
+    "thyme-cli",
+    "thyme-core",
+    "thyme-data",
+    "thyme-neural",
+]
+resolver = "2"
+
+[workspace.package]
+version = "0.0.1"
+edition = "2024"
+description = "Simplified processing for image-based cell profiling with thyme"
+readme = "README.md"
+repository = "https://github.com/tomouellette/thyme"
+categories = ["science"]
+license = "Apache-2.0"
+keywords = [
+    "morphological-variation",
+    "morphological-profiling",
+    "image-processing",
+    "bio-imaging",
+    "phenotypic-screening",
+    "microscopy",
+    "image-analysis",
+]
+
+[profile.release-with-debug]
+inherits = "release"
+debug = true
+
+[profile.release]
+strip = true
+lto = true

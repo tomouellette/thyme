@@ -1,0 +1,73 @@
+[package]
+name = "thyme-cli"
+version.workspace = true
+edition.workspace = true
+description.workspace = true
+repository.workspace = true
+keywords.workspace = true
+categories.workspace = true
+license.workspace = true
+
+[[bin]]
+name = "thyme"
+path = "src/main.rs"
+
+[[bin]]
+name = "docs"
+path = "src/bin/doc.rs"
+required-features = ["docs"]
+
+[dependencies]
+thyme_core = { path = "../thyme-core", package = "thyme-core" }
+thyme_data = { path = "../thyme-data", package = "thyme-data" }
+thyme_neural = { path = "../thyme-neural", package = "thyme-neural" }
+
+# CLI
+clap = { version = "4.5.21", features = ["derive"] }
+
+# Parallelism
+rayon = "1.10.0"
+tokio = { version = "1.43.0", features = ["full"] }
+futures = "0.3.31"
+
+# I/O
+polars = { version = "0.46.0", features = ["parquet"] }
+zarrs = "0.19.2"
+serde = { version = "1.0.190", features = ["derive"] }
+serde_json = "1.0.133"
+
+# Utilities
+colored = "2.1.0"
+kdam = { version = "0.6.1", features = ["template", "rayon"] }
+
+# Neural nets for windows
+[target.'cfg(target_os = "windows")'.dependencies]
+candle-core = { version = "0.8.2" }
+candle-nn = { version = "0.8.2"}
+
+# Neural nets for linux
+[target.'cfg(target_os = "linux")'.dependencies]
+candle-core = { version = "0.8.2" }
+candle-nn = { version = "0.8.2" }
+openssl = { version = "0.10", features = ["vendored"] }
+
+# Neural nets for apple x86_64 
+[target.'cfg(all(target_os = "macos", target_arch = "x86_64"))'.dependencies]
+candle-core = { version = "0.8.2", features = ["accelerate"] }
+candle-nn = { version = "0.8.2", features = ["accelerate"] }
+
+# Neural nets for apple metal
+[target.'cfg(all(target_os = "macos", target_arch = "aarch64"))'.dependencies]
+candle-core = { version = "0.8.2", features = ["metal", "accelerate"] }
+candle-nn = { version = "0.8.2", features = ["metal", "accelerate"] }
+
+# Optional: only compiled when generating docs
+clap-markdown = { version = "0.1.5", optional = true }
+
+[features]
+default = []
+docs = ["clap-markdown"]
+
+[dev-dependencies]
+assert_cmd = "2.0.16"
+predicates = "3.1.3"

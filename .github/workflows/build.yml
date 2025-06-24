@@ -1,0 +1,101 @@
+name: Build thyme command-line binaries
+permissions:
+  contents: write
+  packages: write
+on:
+  push:
+    tags:
+      - 'v*'
+jobs:
+  build:
+    name: Build ${{ matrix.target }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        include:
+          - os: ubuntu-latest
+            target: x86_64-unknown-linux-gnu
+            archive_name: thyme-linux-64.tar.gz
+            artifact_name: linux-64
+          - os: ubuntu-22.04
+            target: x86_64-unknown-linux-gnu
+            archive_name: thyme-linux-64-ubuntu-22.04.tar.gz
+            artifact_name: linux-64-ubuntu-22.04
+          - os: windows-latest
+            target: x86_64-pc-windows-msvc
+            archive_name: thyme-win-64.tar.gz
+            artifact_name: win-64
+          - os: macos-latest
+            target: x86_64-apple-darwin
+            archive_name: thyme-osx-64.tar.gz
+            artifact_name: osx-64
+          - os: macos-latest
+            target: aarch64-apple-darwin
+            archive_name: thyme-osx-arm64.tar.gz
+            artifact_name: osx-arm64
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Cache Cargo home
+      uses: actions/cache@v4
+      with:
+        path: |
+          ~/.cargo/registry
+          ~/.cargo/git
+        key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-cargo-
+    - name: Install Rust
+      uses: dtolnay/rust-toolchain@stable
+      with:
+        toolchain: stable
+        targets: ${{ matrix.target }}
+    - name: Build
+      run: |
+        cd thyme-cli
+        cargo build --release --target ${{ matrix.target }}
+    - name: Prepare artifact
+      shell: bash
+      run: |
+        cd thyme-cli
+        mkdir -p artifact
+        if [ "${{ matrix.os }}" = "windows-latest" ]; then
+          cp ../target/${{ matrix.target }}/release/thyme.exe artifact/thyme.exe
+          tar -czvf ${{ matrix.archive_name }} -C artifact thyme.exe
+        else
+          cp ../target/${{ matrix.target }}/release/thyme artifact/thyme
+          tar -czvf ${{ matrix.archive_name }} -C artifact thyme
+        fi
+    - name: Upload artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: thyme-${{ matrix.artifact_name }}  # Unique artifact name
+        path: thyme-cli/${{ matrix.archive_name }}
+
+  release:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout the code
+      uses: actions/checkout@v4
+    - name: Download artifacts
+      uses: actions/download-artifact@v4
+      with:
+        path: artifacts
+    - name: Display structure of downloaded files
+      run: ls -R artifacts
+    - name: Release
+      uses: softprops/action-gh-release@v2
+      with:
+        tag_name: ${{ github.ref_name }}
+        name: ${{ github.ref_name }}
+        draft: false
+        prerelease: false
+        files: |
+          artifacts/thyme-linux-64/*
+          artifacts/thyme-linux-64-ubuntu-22.04/*
+          artifacts/thyme-win-64/*
+          artifacts/thyme-osx-64/*
+          artifacts/thyme-osx-arm64/*
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

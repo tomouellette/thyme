@@ -1,0 +1,18 @@
+[package]
+name = "thyme-data"
+version.workspace = true
+edition.workspace = true
+description.workspace = true
+repository.workspace = true
+categories.workspace = true
+license.workspace = true
+keywords.workspace = true
+
+[dependencies]
+thyme_core = { path = "../thyme-core", package = "thyme-core" }
+reqwest = { version = "0.12.12", features = ["cookies"] }
+tokio = { version = "1.43.0", features = ["full"] }
+anyhow = "1.0"
+scraper = "0.12"
+dirs = "4.0"
+kdam = { version = "0.6.1", features = ["template", "rayon"] }
