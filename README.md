@@ -46,6 +46,8 @@ cargo build --release
 ./target/release/thyme --help
 ```
 
+If you want to reduce compile, time `lto` can be disabled in `Cargo.toml`. However this may increase binary size (particularly on linux) and possibly reduce performance slightly.
+
 ### Conda
 
 A future [`conda`](https://anaconda.org/) release is being planned.
