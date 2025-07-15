@@ -66,8 +66,8 @@ impl Weights {
     /// Get the file name of the model saved on Google drive.
     fn file_name(&self) -> &str {
         match self {
-            Weights::DinoVitSmall => "dinov2_vits14.safetensors",
-            Weights::DinoVitBase => "dinov2_vitb14.safetensors",
+            Weights::DinoVitSmall => "dinov2_vits14_imagenet.safetensors",
+            Weights::DinoVitBase => "dinov2_vitb14_imagenet.safetensors",
             Weights::DinobloomVitBase => "dinov2_vitb14_dinobloom.safetensors",
             Weights::ScdinoVitSmall => "scdino_vit_small.safetensors",
             Weights::SubcellVitBase => "subcell_vit_base.safetensors",
@@ -77,7 +77,7 @@ impl Weights {
     /// Get the Google drive file identifier for the saved model.
     pub fn file_id(&self) -> &str {
         match self {
-            Weights::DinoVitSmall => "1KDnOYxrwhDgICt0NeSiOVhOlpiBPzp9O",
+            Weights::DinoVitSmall => "1xuyTyPsuPiDtec8ojZwAyXSDq9AzyPQX",
             Weights::DinoVitBase => "19vy-A-KTaaF3vsWKxu0JpA0gaATU52Gh",
             Weights::DinobloomVitBase => "1XhzSiO2IDKppr2UCTAio_niLSk5QA6hG",
             Weights::ScdinoVitSmall => "1omwQNJVMkrbYCstSF11p5HsErHzINTz6",

@@ -81,14 +81,12 @@ pub fn measure_neural(args: &NeuralArgs) {
         std::process::exit(1);
     }
 
-    let (threads, device) = if device == "cuda" && cuda_is_available() {
-        ut::track::progress_log("Cuda device detected.", args.verbose);
-        (1, Device::new_cuda(0).unwrap())
+    let device = if device == "cuda" && cuda_is_available() {
+        Device::new_cuda(0).unwrap()
     } else if device == "metal" && metal_is_available() {
-        ut::track::progress_log("Metal device detected.", args.verbose);
-        (1, Device::new_metal(0).unwrap())
+        Device::new_metal(0).unwrap()
     } else {
-        (args.threads.to_owned().unwrap(), Device::Cpu)
+        Device::Cpu
     };
 
     let model_name = args
@@ -123,17 +121,21 @@ pub fn measure_neural(args: &NeuralArgs) {
     };
 
     if let Some(output) = args.output.to_owned() {
-        if threads < 1 {
-            println!(
-                "[thyme::measure::neural] Threads must be set to a positive integer if provided."
-            );
-            std::process::exit(1);
-        }
+        if let Some(threads) = args.threads.to_owned() {
+            if threads < 1 {
+                println!(
+                    "[thyme::measure::neural] Threads must be set to a positive integer if provided."
+                );
+                std::process::exit(1);
+            }
 
-        rayon::ThreadPoolBuilder::new()
-            .num_threads(threads)
-            .build_global()
-            .unwrap();
+            if matches!(device, Device::Cpu) {
+                rayon::ThreadPoolBuilder::new()
+                    .num_threads(threads)
+                    .build_global()
+                    .unwrap();
+            }
+        }
 
         if !is_image_dir {
             eprintln!(
