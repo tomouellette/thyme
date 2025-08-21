@@ -3,6 +3,8 @@
     <img width="65%" align='center' src="data/img/thyme-dark.png#gh-dark-mode-only"/>
 </p>
 
+<hr>
+
 `thyme` is a command-line tool for processing and profiling morphological data in bio-imaging datasets.
 
 - [Installation](#installation)
