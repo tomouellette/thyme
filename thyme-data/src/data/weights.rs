@@ -1,5 +1,5 @@
 // Copyright (c) 2025, Tom Ouellette
-// Licensed under the BSD 3-Clause License
+// Licensed under the MIT License
 
 use crate::get_thyme_cache;
 use crate::request;

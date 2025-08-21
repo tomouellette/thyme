@@ -1,5 +1,5 @@
 // Copyright (c) 2025, Tom Ouellette
-// Licensed under the BSD 3-Clause License
+// Licensed under the MIT License
 
 use crate::cv::ellipse::fit_ellipse_lstsq;
 use crate::cv::points::{convex_hull, point_to_segment_distance};

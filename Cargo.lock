@@ -5162,7 +5162,7 @@ dependencies = [
 
 [[package]]
 name = "thyme-cli"
-version = "0.0.1"
+version = "0.0.2"
 dependencies = [
  "assert_cmd",
  "candle-core",
@@ -5187,7 +5187,7 @@ dependencies = [
 
 [[package]]
 name = "thyme-core"
-version = "0.0.1"
+version = "0.0.2"
 dependencies = [
  "chrono",
  "colored",
@@ -5209,7 +5209,7 @@ dependencies = [
 
 [[package]]
 name = "thyme-data"
-version = "0.0.1"
+version = "0.0.2"
 dependencies = [
  "anyhow",
  "dirs",
@@ -5222,7 +5222,7 @@ dependencies = [
 
 [[package]]
 name = "thyme-neural"
-version = "0.0.1"
+version = "0.0.2"
 dependencies = [
  "candle-core",
  "candle-nn",
