@@ -365,9 +365,9 @@ If you would like another model added to `thyme`, please open an issue providing
 
 ## License
 
-`thyme` is licensed under the [BSD 3-Clause License](https://en.wikipedia.org/wiki/BSD_licenses#3-clause_license_(%22BSD_License_2.0%22,_%22Revised_BSD_License%22,_%22New_BSD_License%22,_or_%22Modified_BSD_License%22)) (see [LICENSE](https://github.com/tomouellette/thyme/blob/main/LICENSE.txt)).
+`thyme` is licensed under the `MIT` license (see [LICENSE](https://github.com/tomouellette/thyme/blob/main/LICENSE.txt)).
 
-You may not use this file except in compliance with the license. A copy of the license has been included in the root of the repository. Unless you explicitly state otherwise, any contribution intentionally submitted for inclusion in the work by you, as defined in the BSD 3-Clause license, shall be licensed as above, without any additional terms or conditions.
+You may not use this file except in compliance with the license. A copy of the license has been included in the root of the repository. Unless you explicitly state otherwise, any contribution intentionally submitted for inclusion in the work by you, as defined in the MIT license, shall be licensed as above, without any additional terms or conditions.
 
 ## Citation
 
