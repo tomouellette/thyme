@@ -17,9 +17,9 @@ path = "src/bin/doc.rs"
 required-features = ["docs"]
 
 [dependencies]
-pineapple-core = { version = "0.0.4", path = "../pineapple-core" }
-pineapple-data = { version = "0.0.4", path = "../pineapple-data" }
-pineapple-neural = { version = "0.0.4", path = "../pineapple-neural" }
+pineapple-core = { version = "0.0.5", path = "../pineapple-core" }
+pineapple-data = { version = "0.0.5", path = "../pineapple-data" }
+pineapple-neural = { version = "0.0.5", path = "../pineapple-neural" }
 
 # CLI
 clap = { version = "4.5.21", features = ["derive"] }

@@ -8,7 +8,7 @@ license.workspace = true
 authors = ["Tom W. Ouellette <touellette112@gmail.com"]
 
 [dependencies]
-pineapple-core = { version = "0.0.4", path = "../pineapple-core" }
+pineapple-core = { version = "0.0.5", path = "../pineapple-core" }
 reqwest = { version = "0.12.12", features = ["cookies"] }
 tokio = { version = "1.43.0", features = ["full"] }
 anyhow = "1.0"
