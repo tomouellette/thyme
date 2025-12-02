@@ -15,7 +15,7 @@ image = "0.25.5"
 serde = { version = "1.0.190", features = ["derive"] }
 serde_json = "1.0.133"
 npyz = { version = "0.8.3", features = ["npz"] }
-zip = "2.2.2"
+zip = "6.0.0"
 polars = { version = "0.46.0", features = ["parquet"] }
 
 # Parallelism

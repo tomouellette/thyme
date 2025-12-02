@@ -21,6 +21,22 @@ package:
   cargo publish --dry-run --manifest-path pineapple-cli/Cargo.toml
 
 [group: 'build']
+publish-core:
+  cargo publish --manifest-path pineapple-core/Cargo.toml
+
+[group: 'build']
+publish-data:
+  cargo publish --manifest-path pineapple-data/Cargo.toml
+
+[group: 'build']
+publish-neural:
+  cargo publish --manifest-path pineapple-neural/Cargo.toml
+
+[group: 'build']
+publish-cli:
+  cargo publish --manifest-path pineapple-cli/Cargo.toml
+
+[group: 'build']
 tag:
     # Delete and re-tag if build fails
     # git tag -d v0.0.2
