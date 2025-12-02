@@ -214,7 +214,7 @@ where
     }
 
     // An iterator over pixel-level chunks of the raw buffer
-    pub fn iter_pixels(&self) -> ChunksExact<T> {
+    pub fn iter_pixels(&self) -> ChunksExact<'_, T> {
         self.buffer.chunks_exact(self.channels() as usize)
     }
 }
@@ -236,7 +236,7 @@ where
     /// * `y` - Minimum y-coordinate (bottom)
     /// * `w` - Width of crop
     /// * `h` - Height of crop
-    pub fn crop_view(&self, x: u32, y: u32, w: u32, h: u32) -> PineappleViewBuffer<T, Container> {
+    pub fn crop_view(&self, x: u32, y: u32, w: u32, h: u32) -> PineappleViewBuffer<'_, T, Container> {
         PineappleViewBuffer::new(x, y, w, h, self)
     }
 

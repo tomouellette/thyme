@@ -110,10 +110,8 @@ impl Polygons {
             .and_then(|s| s.to_str())
             .map(|s| s.to_lowercase());
 
-        if let Some(ext) = extension {
-            if ext == "json" {
-                return read_polygons_json(path);
-            }
+        if let Some(ext) = extension && ext == "json" {
+            return read_polygons_json(path);
         }
 
         Err(PineappleError::PolygonsReadError)
@@ -139,10 +137,8 @@ impl Polygons {
             .and_then(|s| s.to_str())
             .map(|s| s.to_lowercase());
 
-        if let Some(ext) = extension {
-            if ext == "json" {
-                return write_polygons_json(path, &self.data);
-            }
+        if let Some(ext) = extension && ext == "json" {
+            return write_polygons_json(path, &self.data);
         }
 
         Err(PineappleError::PolygonsWriteError)

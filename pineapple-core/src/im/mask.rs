@@ -65,10 +65,9 @@ impl PineappleMask {
 
         if let Some(ext) = extension {
             if ext == "npy" {
-                if let Ok(bytes) = std::fs::read(&path) {
-                    if let Ok(npy) = NpyFile::new(&bytes[..]) {
-                        return Self::new_from_numpy(npy);
-                    }
+                if let Ok(bytes) = std::fs::read(&path)
+                    && let Ok(npy) = NpyFile::new(&bytes[..]) {
+                    return Self::new_from_numpy(npy);
                 }
 
                 return Err(PineappleError::ImageReadError);

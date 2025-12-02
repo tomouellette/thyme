@@ -78,12 +78,10 @@ impl PineappleImage {
 
         if let Some(ext) = extension {
             if ext == "npy" {
-                if let Ok(bytes) = std::fs::read(&path) {
-                    if let Ok(npy) = NpyFile::new(&bytes[..]) {
-                        Self::new_from_numpy(npy.clone()).unwrap();
-
-                        return Self::new_from_numpy(npy);
-                    }
+                if let Ok(bytes) = std::fs::read(&path)
+                    && let Ok(npy) = NpyFile::new(&bytes[..]) {
+                    Self::new_from_numpy(npy.clone()).unwrap();
+                    return Self::new_from_numpy(npy);
                 }
 
                 return Err(PineappleError::ImageReadError);
@@ -503,7 +501,7 @@ impl PineappleImage {
     /// * `y` - Minimum y-coordinate (bottom)
     /// * `w` - Width of crop
     /// * `h` - Height of crop
-    pub fn crop_view(&self, x: u32, y: u32, w: u32, h: u32) -> PineappleView {
+    pub fn crop_view(&self, x: u32, y: u32, w: u32, h: u32) -> PineappleView<'_> {
         match self {
             PineappleImage::U8(buffer) => PineappleView::U8(buffer.crop_view(x, y, w, h)),
             PineappleImage::U16(buffer) => PineappleView::U16(buffer.crop_view(x, y, w, h)),

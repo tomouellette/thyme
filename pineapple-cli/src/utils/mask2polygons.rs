@@ -89,13 +89,12 @@ pub fn utils_mask2polygons(args: &Mask2polygonsArgs) {
             std::process::exit(1);
         }
 
-        if let Some(parent) = output.parent() {
-            if !parent.is_dir() && parent.to_str().unwrap() != "" {
-                eprintln!(
-                    "[pineapple::utils::mask2polygons] ERROR: Invalid file path. Parent directory of output file path does not exist."
-                );
-                std::process::exit(1);
-            }
+        if let Some(parent) = output.parent()
+            && !parent.is_dir() && parent.to_str().unwrap() != "" {
+            eprintln!(
+                "[pineapple::utils::mask2polygons] ERROR: Invalid file path. Parent directory of output file path does not exist."
+            );
+            std::process::exit(1);
         }
 
         mask2polygons(Path::new(&mask_path), &output, false).unwrap_or_else(|_| {

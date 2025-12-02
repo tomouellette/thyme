@@ -1,12 +1,8 @@
 [package]
 name = "pineapple-core"
-version.workspace = true
-edition.workspace = true
-description.workspace = true
-repository.workspace = true
-keywords.workspace = true
-categories.workspace = true
-license.workspace = true
+version = "0.0.4"
+edition = "2024"
+publish = false
 readme = "README.md"
 
 [dependencies]

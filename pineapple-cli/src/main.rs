@@ -2,7 +2,7 @@
 // Licensed under the GNU GPLv3 License
 
 use clap::{Parser, Subcommand};
-use pineapple_cli::{download, measure, neural, process, profile, utils};
+use pineapple::{download, measure, neural, process, profile, utils};
 
 #[derive(Parser)]
 #[command(version, about, long_about = None)]

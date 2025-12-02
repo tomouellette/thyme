@@ -142,7 +142,7 @@ where
     let len = pixels.len();
     let mid = len / 2;
 
-    if len % 2 == 0 {
+    if len.is_multiple_of(2) {
         let left = pixels[mid - 1];
         let right = pixels[mid];
         (left + right) / 2.0

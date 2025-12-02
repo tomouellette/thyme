@@ -2,7 +2,7 @@
 use clap::{Parser, Subcommand};
 use clap_markdown;
 
-use pineapple_cli::{download, measure, neural, process, profile, utils};
+use pineapple::{download, measure, neural, process, profile, utils};
 
 #[derive(Parser)]
 #[command(version, about, long_about = None)]

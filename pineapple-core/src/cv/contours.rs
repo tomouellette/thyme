@@ -283,11 +283,9 @@ pub fn find_labeled_contours(
             .into_iter()
             .max_by_key(|contour| contour.len());
 
-        if let Some(contour) = contour {
-            if contour.len() > 2 {
-                contours.push(contour);
-                retained.push(*label)
-            }
+        if let Some(contour) = contour && contour.len() > 2 {
+            contours.push(contour);
+            retained.push(*label)
         }
     }
 

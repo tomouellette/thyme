@@ -216,13 +216,12 @@ pub fn neural_image_boxes(args: &NeuralBoxesArgs) {
             std::process::exit(1);
         }
 
-        if let Some(parent) = output.parent() {
-            if !parent.is_dir() && parent.to_str().unwrap() != "" {
-                eprintln!(
-                    "[pineapple::neural::boxes] ERROR: Invalid file path. Parent directory of output file path does not exist."
-                );
-                std::process::exit(1);
-            }
+        if let Some(parent) = output.parent()
+            && !parent.is_dir() && parent.to_str().unwrap() != "" {
+            eprintln!(
+                "[pineapple::neural::boxes] ERROR: Invalid file path. Parent directory of output file path does not exist."
+            );
+            std::process::exit(1);
         }
     } else {
         output = ut::path::create_directory(&output).unwrap_or_else(|_| {

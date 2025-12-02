@@ -1,12 +1,8 @@
 [package]
 name = "pineapple-data"
-version.workspace = true
-edition.workspace = true
-description.workspace = true
-repository.workspace = true
-categories.workspace = true
-license.workspace = true
-keywords.workspace = true
+version = "0.0.4"
+edition = "2024"
+publish = false
 
 [dependencies]
 pineapple_core = { path = "../pineapple-core", package = "pineapple-core" }

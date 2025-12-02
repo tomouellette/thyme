@@ -138,13 +138,12 @@ pub fn utils_images2zarr(args: &Images2zarrArgs) {
             std::process::exit(1);
         }
 
-        if let Some(parent) = output.parent() {
-            if !parent.is_dir() && parent.to_str().unwrap() != "" {
-                eprintln!(
-                    "[pineapple::utils::images2zarr] ERROR: Invalid output path. Parent directory of output file path does not exist."
-                );
-                std::process::exit(1);
-            }
+        if let Some(parent) = output.parent()
+            && !parent.is_dir() && parent.to_str().unwrap() != "" {
+            eprintln!(
+                "[pineapple::utils::images2zarr] ERROR: Invalid output path. Parent directory of output file path does not exist."
+            );
+            std::process::exit(1);
         }
     } else {
         eprintln!(
@@ -264,9 +263,7 @@ pub fn utils_images2zarr(args: &Images2zarrArgs) {
                         _ => unreachable!(),
                     };
 
-                    if result.is_ok() {
-                        result.unwrap();
-
+                    if let Ok(_item) = result {
                         let mut padded = vec![0u8; max_name_length as usize];
                         let bytes = image_name.as_bytes();
                         let len = bytes.len().min(max_name_length as usize);

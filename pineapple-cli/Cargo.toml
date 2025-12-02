@@ -1,12 +1,10 @@
 [package]
-name = "pineapple-cli"
-version.workspace = true
-edition.workspace = true
-description.workspace = true
-repository.workspace = true
-keywords.workspace = true
-categories.workspace = true
-license.workspace = true
+name = "pineapple"
+version = "0.0.4"
+edition = "2024"
+description = "Simplified processing for image-based cell profiling with pineapple"
+license = "GNU GPLv3"
+repository = "https://github.com/tomouellette/pineapple"
 
 [[bin]]
 name = "pineapple"

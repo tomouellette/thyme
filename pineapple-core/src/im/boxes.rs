@@ -88,10 +88,8 @@ impl BoundingBoxes {
             .and_then(|s| s.to_str())
             .map(|s| s.to_lowercase());
 
-        if let Some(ext) = extension {
-            if ext == "json" {
-                return read_boxes_json(path);
-            }
+        if let Some(ext) = extension && ext == "json" {
+            return read_boxes_json(path);
         }
 
         Err(PineappleError::BoxesReadError)
@@ -117,10 +115,8 @@ impl BoundingBoxes {
             .and_then(|s| s.to_str())
             .map(|s| s.to_lowercase());
 
-        if let Some(ext) = extension {
-            if ext == "json" {
-                return write_boxes_json(path, &self.data);
-            }
+        if let Some(ext) = extension && ext == "json" {
+            return write_boxes_json(path, &self.data);
         }
 
         Err(PineappleError::BoxesWriteError)

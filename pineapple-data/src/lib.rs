@@ -6,10 +6,9 @@
 use dirs::home_dir;
 
 pub fn get_pineapple_cache() -> std::path::PathBuf {
-    if let Ok(pineapple_cache) = std::env::var("THYME_CACHE") {
-        if !pineapple_cache.is_empty() {
-            return std::path::PathBuf::from(pineapple_cache);
-        }
+    if let Ok(pineapple_cache) = std::env::var("THYME_CACHE")
+        && !pineapple_cache.is_empty() {
+        return std::path::PathBuf::from(pineapple_cache);
     }
 
     if let Some(home) = home_dir() {
