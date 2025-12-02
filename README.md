@@ -3,7 +3,7 @@
     <img width="65%" align='center' src="data/img/pineapple-dark.png#gh-dark-mode-only"/>
 </p> -->
 
-pineapple
+# pineapple
 
 <hr>
 
