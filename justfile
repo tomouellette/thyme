@@ -2,7 +2,8 @@
 
 [group: 'dev']
 docs:
-  cargo run -p pineapple-cli --bin docs --features docs > docs/docs.md
+  cargo run -p pineapple --bin docs --features docs > docs/api.md
+  uv run zensical build
 
 [group: 'dev']
 clippy:

@@ -18,7 +18,7 @@ Pre-built binaries for x86-64 linux, x86-64 apple, aarch-64 apple, and x86-64 wi
 
 ## Usage
 
-See [pineapple-cli](https://github.com/tomouellette/pineapple/tree/main/pineapple-cli) for details.
+See [compbio.ai/docs/pineapple](https://compbio.ai/docs/pineapple/) or [pineapple-cli](https://github.com/tomouellette/pineapple/tree/main/pineapple-cli) for details.
 
 ## License
 

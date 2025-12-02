@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap');
+
+body h1, h2, h3 {
+    font-family: "Lora";
+    font-weight: 600 !important;
+}
+
+.md-header {
+    color: black;
+    background: linear-gradient(90deg, rgba(115, 173, 233, 0.5) 0%, rgba(140, 201, 191, 0.5) 50%, rgba(155, 218, 166, 0.5) 100%);
+}
+
+.md-header__topic {
+    color: black;
+}
+
+.md-header__title .md-ellipsis {
+    color: rgba(0, 0, 0, 0.8) !important;
+    font-family: "Lora";
+    font-size: 1.5em;
+    font-weight: 500;
+}
+
+.md-search__button {
+    color: black;
+}
+
+.md-search__button::after {
+    color: black;
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.md-search__button::before {
+    color: rgba(0, 0, 0, 0.4);
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.md-header__button.md-logo img {
+    height: 5em;
+}
