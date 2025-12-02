@@ -2,10 +2,6 @@
 
 `pineapple` is a command-line tool for processing and profiling morphological data in bio-imaging datasets.
 
-- [Installation](#installation)
-  - [Cargo](#cargo)
-  - [Pre-compiled binaries](#pre-compiled-binaries)
-  - [Source](#source)
 - [Usage](#usage)
   - [`pineapple process`](#pineapple-process)
   - [`pineapple profile`](#pineapple-profile)
@@ -14,47 +10,10 @@
   - [`pineapple utils`](#pineapple-utils)
   - [`pineapple download`](#pineapple-download)
 - [License](#license)
-- [Citation](#citation)
 
-## Installation
+# Usage
 
-### Cargo
-
-`pineapple` can be installed using the [rust](https://www.rust-lang.org/) package manager [cargo](https://github.com/rust-lang/cargoinstall):
-
-```bash
-cargo install --git https://github.com/tomouellette/pineapple pineapple-cli
-```
-
-Assuming `cargo` properly manages your `PATH`, you can verify the installation as follows.
-
-```bash
-pineapple --help
-```
-
-### Pre-compiled binaries
-
-Pre-built binaries for x86-64 linux, x86-64 apple, aarch-64 apple, and x86-64 windows are available for download in [releases](https://github.com/tomouellette/pineapple/releases). Note that the pre-built binaries are untested on windows.
-
-### Source
-
-If you have [rust](https://www.rust-lang.org/) (tested on `1.86.0`) and [cargo](https://github.com/rust-lang/cargoinstall) installations, you can build directly from source as follows.
-
-```bash
-git clone https://github.com/tomouellette/pineapple
-cargo build --release
-./target/release/pineapple --help
-```
-
-If you want to reduce compile time, `lto` can be disabled in `Cargo.toml`. However this may increase binary size (particularly on linux) and possibly reduce performance slightly.
-
-### Conda
-
-A future [`conda`](https://anaconda.org/) release is being planned.
-
-## Usage
-
-### `pineapple process`
+## `pineapple process`
 
 Given a set of [valid input images](https://github.com/tomouellette/pineapple/tree/main/pineapple-core), `pineapple` can extract object-level data for a variety of [segmentation formats](https://github.com/tomouellette/pineapple/tree/main/pineapple-core) including masks, polygons, and bounding boxes. Object-level data (e.g. cropped objects, polygons, etc.) can be extracted and saved as follows.
 
@@ -97,7 +56,7 @@ pineapple process mask \
     -v                      # Verbose output
 ```
 
-### `pineapple profile`
+## `pineapple profile`
 
 Given a set of [valid input images](https://github.com/tomouellette/pineapple/tree/main/pineapple-core), `pineapple` can compute object-level morphological descriptors across a variety of paired [segmentation formats](https://github.com/tomouellette/pineapple/tree/main/pineapple-core) including masks, polygons, and bounding boxes. Descriptors can be computed and saved as follows.
 
@@ -138,7 +97,7 @@ pineapple profile mask \
     -v                      # Verbose output
 ```
 
-### `pineapple neural`
+## `pineapple neural`
 
 Given a set of [valid input images](https://github.com/tomouellette/pineapple/tree/main/pineapple-core), `pineapple` can compute object-level self-supervised features (aka. 'deep profiles') across a variety of paired [segmentation formats](https://github.com/tomouellette/pineapple/tree/main/pineapple-core) including masks, polygons, and bounding boxes. Features can be computed and saved as follows.
 
@@ -179,7 +138,7 @@ pineapple neural mask \
     -v                        # Verbose output
 ```
 
-### `pineapple measure`
+## `pineapple measure`
 
 If you want to compute quantitative features directly from images or polygons without associated segmentation data, then you can use `pineapple measure`. Various quantitative features can be computed and saved as follows.
 
@@ -230,7 +189,7 @@ pineapple measure neural -i images/ -o embeddings.npz --model dino_vit_small --i
 
 Of note, generating self-supervised embeddings from pre-extracted images will be much faster (on GPU or via multi-threading) than performing object-level computation on image-segment pairs. Therefore we recommend using `pineapple neural [segment]` for cases where you are storage-constrained and `pineapple process [segment]` then `pineapple measure neural` for cases where you require faster object-level embeddings.
 
-### `pineapple utils`
+## `pineapple utils`
 
 Additional utilities to convert between data formats (e.g. images to zarr arrays, segmentation masks to polygons, etc.) are available using `pineapple utils`. Various non-destructive conversions can be performed as follows.
 
@@ -259,7 +218,7 @@ images2zarr = zarr.open("zarr_images.zarr")
 strings = [bytes(row).split(b"\x00", 1)[0].decode("utf-8") for row in images2zarr["names"][:]]
 ```
 
-### `pineapple download`
+## `pineapple download`
 
 To enable easier testing and model development/evaluation, we have curated and standardized a variety of previously annotated or generated bio-imaging datasets. We have also collected a variety of pre-trained neural network models for generating self-supervised embeddings. Below we provide an overview of the available datasets and pre-trained weights.
 
@@ -358,7 +317,7 @@ Below we provide a table of the available weights in the current `pineapple` rel
 
 If you would like another model added to `pineapple`, please open an issue providing a link to the original model implementation and the associated open source weights. For each new model, we have to generate a rust implementation for compatibility with `pineapple neural` and `pineapple measure neural`.
 
-## License
+# License
 
 `pineapple` is licensed under the `BSD 3-Clause` license (see [LICENSE](https://github.com/tomouellette/pineapple/blob/main/LICENSE.txt)).
 
