@@ -1,0 +1,9 @@
+docs/
+/target
+recipes/
+Cross.toml
+.DS_Store
+**/.DS_Store
+**/build.sh
+.vscode
+tag.sh
