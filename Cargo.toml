@@ -14,7 +14,7 @@ description = "Simplified processing for image-based cell profiling with pineapp
 readme = "README.md"
 repository = "https://github.com/tomouellette/pineapple"
 categories = ["science"]
-license = "GNU GPLv3"
+license = "BSD 3-Clause"
 keywords = [
     "morphological-variation",
     "morphological-profiling",

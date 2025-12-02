@@ -1,5 +1,5 @@
 // Copyright (c) 2025, Tom Ouellette
-// Licensed under the GNU GPLv3 License
+// Licensed under the BSD 3-Clause License
 
 use std::io::Write;
 use std::path::{Path, PathBuf};

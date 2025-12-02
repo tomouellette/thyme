@@ -1,9 +1,11 @@
 [package]
 name = "pineapple-core"
-version = "0.0.4"
-edition = "2024"
-publish = false
-readme = "README.md"
+version.workspace = true
+edition.workspace = true
+description.workspace = true
+repository.workspace = true
+license.workspace = true
+authors = ["Tom W. Ouellette <touellette112@gmail.com"]
 
 [dependencies]
 enum_dispatch = "0.3.13"

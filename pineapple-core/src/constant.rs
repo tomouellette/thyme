@@ -1,5 +1,5 @@
 // Copyright (c) 2025, Tom Ouellette
-// Licensed under the GNU GPLv3 License
+// Licensed under the BSD 3-Clause License
 
 // All currently supported image formats
 pub const SUPPORTED_IMAGE_FORMATS: [&str; 18] = [

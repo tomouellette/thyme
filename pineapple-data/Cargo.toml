@@ -1,11 +1,14 @@
 [package]
 name = "pineapple-data"
-version = "0.0.4"
-edition = "2024"
-publish = false
+version.workspace = true
+edition.workspace = true
+description.workspace = true
+repository.workspace = true
+license.workspace = true
+authors = ["Tom W. Ouellette <touellette112@gmail.com"]
 
 [dependencies]
-pineapple_core = { path = "../pineapple-core", package = "pineapple-core" }
+pineapple-core = { version = "0.0.4", path = "../pineapple-core" }
 reqwest = { version = "0.12.12", features = ["cookies"] }
 tokio = { version = "1.43.0", features = ["full"] }
 anyhow = "1.0"

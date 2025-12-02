@@ -1,5 +1,5 @@
 // Copyright (c) 2025, Tom Ouellette
-// Licensed under the GNU GPLv3 License
+// Licensed under the BSD 3-Clause License
 
 /// Compute the convex hull for a set of (x, y) points
 ///

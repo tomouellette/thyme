@@ -1,12 +1,15 @@
 [package]
 name = "pineapple-neural"
-version = "0.0.4"
-edition = "2024"
-publish = false
+version.workspace = true
+edition.workspace = true
+description.workspace = true
+repository.workspace = true
+license.workspace = true
+authors = ["Tom W. Ouellette <touellette112@gmail.com"]
 
 [dependencies]
-pineapple_core = { path = "../pineapple-core", package = "pineapple-core" }
-pineapple_data = { path = "../pineapple-data", package = "pineapple-data" }
+pineapple-core = { version = "0.0.4", path = "../pineapple-core" }
+pineapple-data = { version = "0.0.4", path = "../pineapple-data" }
 
 serde = { version = "1.0.190", features = ["derive"] }
 serde_json = "1.0.133"
