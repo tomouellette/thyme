@@ -5,8 +5,6 @@
 
 # pineapple
 
-<hr>
-
 `pineapple` is a command-line tool for processing and profiling morphological data in bio-imaging datasets.
 
 - [Installation](#installation)
