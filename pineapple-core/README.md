@@ -1,6 +1,6 @@
 # pineapple-core
 
-`pineapple-core` defines functions and algorithms for reading, processing, and profilingbio-imaging datasets.
+`pineapple-core` defines functions and algorithms for reading, processing, and profiling bio-imaging datasets.
 
 ## Supported image formats
 
