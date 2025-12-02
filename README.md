@@ -1,7 +1,9 @@
-<p align='center'>    
+<!-- <p align='center'>    
     <img width="65%" align='center' src="data/img/pineapple-light.png#gh-light-mode-only"/>
     <img width="65%" align='center' src="data/img/pineapple-dark.png#gh-dark-mode-only"/>
-</p>
+</p> -->
+
+pineapple
 
 <hr>
 
