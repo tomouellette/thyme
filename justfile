@@ -21,19 +21,14 @@ package:
   cargo publish --dry-run --manifest-path pineapple-cli/Cargo.toml
 
 [group: 'build']
-publish-core:
+publish:
+  #!/bin/bash
   cargo publish --manifest-path pineapple-core/Cargo.toml
-
-[group: 'build']
-publish-data:
+  sleep 30s
   cargo publish --manifest-path pineapple-data/Cargo.toml
-
-[group: 'build']
-publish-neural:
+  sleep 30s
   cargo publish --manifest-path pineapple-neural/Cargo.toml
-
-[group: 'build']
-publish-cli:
+  sleep 30s
   cargo publish --manifest-path pineapple-cli/Cargo.toml
 
 [group: 'build']
